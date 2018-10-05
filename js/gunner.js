@@ -1,5 +1,5 @@
 (function(){
-  const ws = new WebSocket(`ws://localhost`);
+  const ws = new WebSocket(`ws://92.222.88.16:9090?team=2&username=Xx-lesbgdu01-xX&job=Shooter`);
 
   var turretAngle = 0;
   var turretTurnDirection = 1;
@@ -49,6 +49,7 @@
     let dir = parseInt(degres.value);
     turnTo(dir);
     let audio = new Audio('sound/visseuse.mp3');
+    audio.volume = 0.2;
     audio.play();
   }
 
