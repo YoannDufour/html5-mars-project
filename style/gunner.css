@@ -60,3 +60,13 @@ body{
   padding-right: 75px;
 
 }
+#led-reloaded{
+  background-color: #00ff00;
+}
+.inputDirection{
+  width:50%;
+  margin-top: 5px;
+  background-color: grey;
+  border-radius: 7px;
+  padding:5px;
+}

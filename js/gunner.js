@@ -8,36 +8,47 @@
   var turretReloaded = false;
   var turretReloading = false;
 
+  // tir
   var potPower = document.getElementById('power-potard');
   var powerScreen = document.getElementById('power-value');
   var ledReloading = document.getElementById('led-reloading');
   var ledReloaded = document.getElementById('led-reloaded');
   var btnShoot = document.getElementById('btn-shoot');
 
+  // direction
+  var degres = document.getElementById('dir-screen');
+  var potDirection = document.getElementById('dir-potard');
+  var btnDirLeft = document.getElementById('btn-dir-left');
+  var btnDirRight = document.getElementById('btn-dir-right');
+  var btnValidate = document.getElementById('btn-validate');
 
   potPower.oninput = function(){
     powerScreen.innerHTML = this.value;
   }
 
-  /*btnDirRight.onmousedown = function(){
+  degres.oninput = function(){
+    let dir = parseInt(degres.value);
+    potDirection.style.transform = "rotate(" + dir + "deg)";
+  }
 
-    direction += 5;
-    direction = direction%360;
+  btnDirRight.onclick = function(){
+    let dir = parseInt(degres.value);
+    dir += 1;
+    degres.value = dir%360;
+    potDirection.style.transform = "rotate(" + parseInt(dir) + "deg)";
+  }
 
-    potDirection.style.transform = "rotate(" + parseInt(direction) + "deg)";
-    potDirection.dataset.dir = direction;
-    directionScreen.innerHTML = direction + "° " + "Right";
+  btnDirLeft.onclick = function(){
+    let dir = parseInt(degres.value);
+    dir -= 1;
+    degres.value = dir%360;
+    potDirection.style.transform = "rotate(" + parseInt(dir) + "deg)";
+  }
 
-  }*/
-
-  /*btnDirLeft.onclick = function(){
-    direction -= 5;
-    direction = direction%360;
-
-    potDirection.style.transform = "rotate(" + parseInt(direction) + "deg)";
-    potDirection.dataset.dir = direction;
-    directionScreen.innerHTML = direction + "° " + "Left";
-  }*/
+  btnValidate.onclick = function(){
+    let dir = parseInt(degres.value);
+    turnTo(dir);
+  }
 
   btnShoot.onclick = function(){
     let power = parseInt(potPower.value);
@@ -85,6 +96,8 @@
     btnShoot.disabled = false;
 
     //Son charger
+    let audio = new Audio('sound/charger.mp3');
+    audio.play();
   }
 
   function onreloading(){
@@ -93,6 +106,8 @@
     btnShoot.disabled = true;
 
     //Son decharger
+    let audio = new Audio('sound/decharger.mp3');
+    audio.play();
   }
 
 })();
