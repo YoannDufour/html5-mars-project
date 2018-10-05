@@ -3,6 +3,10 @@
     src: url(DS-DIGIB.TTF);
 }
 
+body{
+    overflow: hidden;
+}
+
 h2,.h1{
     font-family: DS-DIGIB !important;
     color: white !important;
@@ -75,6 +79,9 @@ h2,.h1{
     height: 90%;
     width: auto;
     transform: rotate(90deg);
+    border-radius: 50%;
+    border: solid 2px white;
+    padding: 10px;
 }
 
 #moveControl{
