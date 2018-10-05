@@ -9,7 +9,7 @@
   var turretReloaded = false;
   var turretReloading = false;
 
-  var setTurret = false;
+  var setTurret = true;
 
   // tir
   var potPower = document.getElementById('power-potard');
@@ -35,8 +35,11 @@
 ws.onmessage = function(message) {
     spaceship = JSON.parse(message.data);
 
-    potDirection.style.transform = "rotate(" + spaceship.data.turretAngle + "deg)";
-    degres.value = spaceship.data.turretAngle;
+    if(setTurret){
+        potDirection.style.transform = "rotate(" + spaceship.data.turretAngle + "deg)";
+        degres.value = spaceship.data.turretAngle;
+    }
+
 
     //console.log(spaceship);
 
@@ -58,6 +61,7 @@ ws.onmessage = function(message) {
   }
 
   degres.oninput = function(){
+     setTurret = false;
     let dir = parseInt(degres.value);
     potDirection.style.transform = "rotate(" + dir + "deg)";
   }
@@ -82,6 +86,7 @@ ws.onmessage = function(message) {
     let audio = new Audio('sound/visseuse.mp3');
     audio.volume = 0.2;
     audio.play();
+    setTurret = true;
   }
 
   btnShoot.onclick = function(){
