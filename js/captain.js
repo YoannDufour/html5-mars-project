@@ -190,7 +190,7 @@ var gunnerupdate = function (reloading, reloaded, turret) {
 
     }
     if (reloaded == true) {
-        document.getElementsByClassName("gunner")[0].textContent = "STATUS: RELOADED";
+        document.getElementsByClassName("gunner")[0].textContent = "STATUS: LOADED";
         document.getElementsByClassName("gunner")[0].style.borderColor = "#29ff01";
         document.getElementsByClassName("gunner")[0].style.color = "#29ff01";
         document.getElementsByClassName("turret")[0].style.borderColor = "#29ff01";
