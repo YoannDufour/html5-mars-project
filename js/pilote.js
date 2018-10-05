@@ -146,11 +146,11 @@ function intervalAuto(){
      auto = setInterval(function(){ 
      ws.send(JSON.stringify({
          name: 'spaceship:move', data: {
-             time: 1000,
-             power: 0.5,
+             time: 100,
+             power: 1,
          }
      }));
-    }, 1000);
+    }, 100);
 }
 
 function autoMode(){
