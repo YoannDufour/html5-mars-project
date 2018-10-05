@@ -34,6 +34,7 @@
 
 ws.onmessage = function(message) {
     spaceship = JSON.parse(message.data);
+    turretTurnTo = spaceship.data.turretAngle;
 
     if(setTurret){
         potDirection.style.transform = "rotate(" + spaceship.data.turretAngle + "deg)";
@@ -51,8 +52,6 @@ ws.onmessage = function(message) {
         turretReloaded = false;
     }
 }
-
-
 
 
 
@@ -84,7 +83,20 @@ ws.onmessage = function(message) {
 
   btnValidate.onclick = function(){
     let dir = parseInt(degres.value);
-    turnTo(dir);
+    let marche;
+    let dirMessage;
+
+    if(dir > turretTurnTo && dir <= turretTurnTo + 180){
+        marche = 1;
+        dirMessage = dir - turretTurnTo;
+        console.log(dirMessage);
+    }
+    else{
+        marche = -1;
+        dirMessage = turretTurnTo - dir;
+    }
+
+    rotate(dirMessage,marche);
     let audio = new Audio('sound/visseuse.mp3');
     audio.volume = 0.2;
     audio.play();
