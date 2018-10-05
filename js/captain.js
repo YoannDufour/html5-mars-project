@@ -279,13 +279,32 @@ team4.onopen = function () {
 };
 
 function cheatTeam1() {
-    team1.send(JSON.stringify({name: 'spaceship:thruster:power', data: {'power': parseFloat(0.01)}}));
+    team1.send(JSON.stringify({
+            name: 'spaceship:rotate', data: {
+                'angle': 180,
+                'direction': -1,
+            }
+        }
+    ));
 }
 
 function cheatTeam3() {
-    team3.send(JSON.stringify({name: 'spaceship:thruster:power', data: {'power': parseFloat(0.01)}}));
+    team3.send(JSON.stringify({
+            name: 'spaceship:rotate', data: {
+                'angle': 180,
+                'direction': -1,
+            }
+        }
+    ));
 }
 
+
 function cheatTeam4() {
-    team4.send(JSON.stringify({name: 'spaceship:thruster:power', data: {'power': parseFloat(0.01)}}));
+    team4.send(JSON.stringify({
+            name: 'spaceship:rotate', data: {
+                'angle': 180,
+                'direction': -1,
+            }
+        }
+    ));
 }
