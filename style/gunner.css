@@ -1,4 +1,10 @@
-body{
+@font-face {
+    font-family: DS-DIGIB;
+    src: url(DS-DIGIB.TTF);
+}
+
+body {
+    font-family: DS-DIGIB;
   padding: 0;
   margin: 0;
   background-image: url("../img/gunnerBackground.jpg");
