@@ -1,3 +1,4 @@
+
 var ws, modal;
 
 function selectRole(){
@@ -41,3 +42,4 @@ function Connection() {
         document.dispatchEvent(event);
     };
 }
+

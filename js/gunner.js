@@ -1,5 +1,5 @@
 (function(){
-  const ws = new WebSocket(`ws://92.222.88.16:9090?team=2&username=Xx-lesbgdu01-xX&job=Shooter`);
+
 
   var turretAngle = 0;
   var turretTurnDirection = 1;
@@ -7,6 +7,10 @@
 
   var turretReloaded = false;
   var turretReloading = false;
+
+
+  var setTurret = true;
+
 
   // tir
   var potPower = document.getElementById('power-potard');
@@ -22,16 +26,48 @@
   var btnDirRight = document.getElementById('btn-dir-right');
   var btnValidate = document.getElementById('btn-validate');
 
+
+ws.onmessage = function(message) {
+    spaceship = JSON.parse(message.data);
+    turretTurnTo = spaceship.data.turretAngle;
+
+    if(setTurret){
+        potDirection.style.transform = "rotate(" + spaceship.data.turretAngle + "deg)";
+        degres.value = spaceship.data.turretAngle;
+    }
+
+
+    //console.log(spaceship);
+
+    if(spaceship.data.reloaded && !turretReloaded){
+        onreloaded();
+        turretReloaded = true;
+    }
+    else if(!spaceship.data.reloaded){
+        onreloading();
+        turretReloaded = false;
+    }
+}
+
+
+
+
   potPower.oninput = function(){
     powerScreen.innerHTML = this.value;
   }
 
   degres.oninput = function(){
+
+     setTurret = false;
+
     let dir = parseInt(degres.value);
     potDirection.style.transform = "rotate(" + dir + "deg)";
   }
 
   btnDirRight.onclick = function(){
+
+      setTurret = false;
+
     let dir = parseInt(degres.value);
     dir += 1;
     degres.value = dir%360;
@@ -39,6 +75,9 @@
   }
 
   btnDirLeft.onclick = function(){
+
+      setTurret = false;
+
     let dir = parseInt(degres.value);
     dir -= 1;
     degres.value = dir%360;
@@ -47,14 +86,35 @@
 
   btnValidate.onclick = function(){
     let dir = parseInt(degres.value);
-    turnTo(dir);
+
+    let marche;
+    let dirMessage;
+
+    if(dir > turretTurnTo && dir <= turretTurnTo + 180){
+        marche = 1;
+        dirMessage = dir - turretTurnTo;
+        console.log(dirMessage);
+    }
+    else{
+        marche = -1;
+        dirMessage = turretTurnTo - dir;
+    }
+
+    console.log('rotate');
+
+    rotate(dirMessage,marche);
     let audio = new Audio('sound/visseuse.mp3');
     audio.volume = 0.2;
     audio.play();
+    setTurret = true;
+
   }
 
   btnShoot.onclick = function(){
     let power = parseInt(potPower.value);
+
+    power = power / 100;
+
     fire(power);
     onreloading();
   }
@@ -86,7 +146,9 @@
     var json = {
       name : "spaceship:turret:fire",
       data : {
-        power : power
+
+        "power" : power
+
       }
     }
 
@@ -112,5 +174,6 @@
     let audio = new Audio('sound/decharger.mp3');
     audio.play();
   }
+
 
 })();

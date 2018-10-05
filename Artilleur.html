@@ -1,1 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title></title>
 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="style/baseStyle.css">
+    <link rel="stylesheet" href="style/gunner.css">
+
+</head>
+<body>
+
+    <div class="container">
+        <header class="row">
+            <div class="col-12">
+                <h1>Gunner Commands</h1>
+            </div>
+        </header>
+
+        <section class="row">
+
+            <!-- Left Board (direction) -->
+            <article class="col-5 control-block">
+                <div class="row">
+                    <h2 class="col-12">Direction</h2>
+                </div>
+
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <div class="direction-btn">
+                            <img class="direction-potard" id="dir-potard" src="img/potard.png" alt="" data-dir="0">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-4">
+                        <button id="btn-dir-left" class="btn btn-secondary" type="button" name="button">left</button>
+                    </div>
+                    <div class="col-4 text-center">
+                        <input type="text" class="inputDirection" id="dir-screen" value="0">°
+                    </div>
+                    <div class="col-4 text-right">
+                        <button id="btn-dir-right" class="btn btn-secondary" type="button" name="button">right</button>
+                    </div>
+                </div>
+                <div class="row">
+                  <div class="col-12 text-center">
+                    <button class="btn btn-primary" id="btn-validate" type="button" name="button">Validate</button>
+                  </div>
+                </div>
+            </article>
+            <!-- End left board (direction) -->
+
+            <!-- Right Board (Shoot) -->
+            <article class="col-5 offset-2 control-block">
+                <div class="row">
+                    <h2 class="col-12">Shoot</h2>
+                </div>
+
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <span>1</span>
+                        <input id="power-potard" type="range" min="1" max="100" value="50">
+                        <span>100</span>
+                    </div>
+                    <div class="col-12 text-center">
+                        <span id="power-value">50</span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-6 text-center">
+                        <span>Reloading</span>
+                        <div class="led" id="led-reloading"></div>
+                    </div>
+                    <div class="col-6 text-center">
+                        <span>Reloaded</span>
+                        <div class="led" id="led-reloaded"></div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <button id="btn-shoot" class="btn btn-danger" type="button" name="button">SHOOT</button>
+                    </div>
+                </div>
+            </article>
+            <!-- End right board (shoot) -->
+
+        </section>
+    </div>
+    <script type="text/javascript" src="js/connect.js"></script>
+    <script type="text/javascript" src="js/gunner.js"></script>
+</body>
+</html>
