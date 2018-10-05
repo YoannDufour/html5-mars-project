@@ -33,11 +33,11 @@ function Connection() {
     );
 
     ws.onopen = function () {
+        const event = new Event('connected');
+
         modal.style.display = "none";
         console.log("socket open with server !");
-    };
 
-    ws.onmessage = function(message) {
-        console.log(message.data);
+        document.dispatchEvent(event);
     };
 }
