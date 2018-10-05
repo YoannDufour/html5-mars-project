@@ -11,7 +11,9 @@
 		<h3>+1 Energie</h3>
 		<p><h4>E</h4> (propulseurs) | <h4>D</h4> (bouclier) | <h4>C</h4> (survie)</p>
 		<h3>-1 Energie</h3>
-		<p><h4>Z</h4> (propulseurs) | <h4>S</h4> (bouclier) | <h4>X</h4> (survie)</p>
+        <p><h4>Z</h4> (propulseurs) | <h4>S</h4> (bouclier) | <h4>X</h4> (survie)</p>
+        <h3>Initialiser :</h3>
+		<p><h4>I</h4> (40 / 40 / 20)</p>
 	</div>
 	
     <div class="slidecontainer">
@@ -112,6 +114,15 @@ function initListener() {
 		document.getElementById('NRG').innerHTML = (parseInt(document.getElementById('NRG').innerHTML) + parseInt(document.getElementById("Système").value)).toString();
         document.getElementById("Système").value = 0;
         document.getElementById("SystemInfos").innerHTML=document.getElementById("Système").value;    
+    }
+    if(event.key == "i") {
+		document.getElementById('NRG').innerHTML = 0;
+        document.getElementById("Système").value = 20;
+        document.getElementById("SystemInfos").innerHTML=document.getElementById("Système").value;
+        document.getElementById("Bouclier").value = 40;
+        document.getElementById("ShieldInfos").innerHTML=document.getElementById("Bouclier").value;
+        document.getElementById("Propulseurs").value = 40;
+        document.getElementById("ThurstInfos").innerHTML=document.getElementById("Propulseurs").value;  
     }
 });
 

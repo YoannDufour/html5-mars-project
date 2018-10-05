@@ -39,6 +39,7 @@ body {
     border: solid 3px grey;
     border-radius: 10px;
     margin: auto;
+	margin-left: 30%;
     padding: 10px;
 }
 
@@ -61,6 +62,33 @@ body {
     margin-bottom: 8px;
     margin-left: 45%;
 }
+
+.commandes {
+	font-family: DS-DIGIB;
+	width: 25%;
+	float : left;
+	top : 0;
+	background: #02001a;
+    border: solid 3px grey;
+    border-radius: 10px;
+	color : #99ecff;
+	text-align: center;
+}
+
+.commandes h3 {
+	color : white;
+	font-family: DS-DIGIB;
+	margin : 2px;
+	font-size : 30px;
+}
+
+.commandes h4 {
+	font-family: DS-DIGIB;
+	margin : 2px;
+	font-size : 30px;
+	display: inline;
+}
+
 
 #NrgRest {
     font-family: DS-DIGIB;
