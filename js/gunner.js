@@ -30,28 +30,28 @@
 
   ws.onopen = function () {
     console.log("socket open with server !");
-};
+  };
 
-ws.onmessage = function(message) {
+  ws.onmessage = function(message) {
     spaceship = JSON.parse(message.data);
     turretTurnTo = spaceship.data.turretAngle;
 
     if(setTurret){
-        potDirection.style.transform = "rotate(" + spaceship.data.turretAngle + "deg)";
-        degres.value = spaceship.data.turretAngle;
+      potDirection.style.transform = "rotate(" + spaceship.data.turretAngle + "deg)";
+      degres.value = spaceship.data.turretAngle;
     }
 
 
     //console.log(spaceship);
 
     if(spaceship.data.reloaded && !turretReloaded){
-        onreloaded();
-        turretReloaded = true;
+      onreloaded();
+      turretReloaded = true;
     }
     else if(!spaceship.data.reloaded){
-        turretReloaded = false;
+      turretReloaded = false;
     }
-}
+  }
 
 
 
@@ -60,13 +60,13 @@ ws.onmessage = function(message) {
   }
 
   degres.oninput = function(){
-     setTurret = false;
+    setTurret = false;
     let dir = parseInt(degres.value);
     potDirection.style.transform = "rotate(" + dir + "deg)";
   }
 
   btnDirRight.onclick = function(){
-      setTurret = false;
+    setTurret = false;
     let dir = parseInt(degres.value);
     dir += 1;
     degres.value = dir%360;
@@ -74,7 +74,7 @@ ws.onmessage = function(message) {
   }
 
   btnDirLeft.onclick = function(){
-      setTurret = false;
+    setTurret = false;
     let dir = parseInt(degres.value);
     dir -= 1;
     degres.value = dir%360;
@@ -87,13 +87,13 @@ ws.onmessage = function(message) {
     let dirMessage;
 
     if(dir > turretTurnTo && dir <= turretTurnTo + 180){
-        marche = 1;
-        dirMessage = dir - turretTurnTo;
-        console.log(dirMessage);
+      marche = 1;
+      dirMessage = dir - turretTurnTo;
+      console.log(dirMessage);
     }
     else{
-        marche = -1;
-        dirMessage = turretTurnTo - dir;
+      marche = -1;
+      dirMessage = turretTurnTo - dir;
     }
 
     rotate(dirMessage,marche);
@@ -164,6 +164,22 @@ ws.onmessage = function(message) {
     audio.play();
   }
 
+  document.onkeypress=function(e){e=e||window.event;
+      var key=e.which?e.which:event.keyCode;
+      switch (key) {
+        case 32:
+          document.getElementById('btn-shoot').click();
+          break;
+        case 122:
+          document.getElementById('btn-dir-left').click();
+        break;
+        case 115:
+          document.getElementById('btn-dir-right').click();
+        break;
+        default:
+
+      }
+    }
 
 
-})();
+  })();
