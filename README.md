@@ -78,3 +78,12 @@ Panneau principal : Affichage des différents niveaux d'énergie du vaisseau sou
 
 Possibilité de les modifier avec la souris ou les boutons clavier. Un petit compteur affiche la valeur exacte du slider, pour pouvoir 
 être plus précis.
+
+
+#Pilotage
+
+La vitesse peut être ajustée avec le panneau de gauche. La vitesse peut aussi être ajustée avec les touches haut/z et bas/s.
+
+La rotation du vaiseau peut être ajustée avec le panneau de droite. La rotation du vaiseau peut aussi être ajustée avec les touches gauche/q et touche droite/d.
+
+Une musique est jouée en fond et un son est joué lors de l'acceleration du vaisseau. Les sons peuvent être désactivés avec le bouton en haut a gauche de l'écran.
