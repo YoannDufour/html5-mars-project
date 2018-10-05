@@ -87,3 +87,12 @@ body {
     appearance: none;
     background-size: cover;
 }
+
+#jean{
+    width: 100%;
+    border: solid 1px white;
+    padding-left: 5px;
+    padding-top: 5px;
+    padding-right: 5px;
+    margin-top: 100px;
+}

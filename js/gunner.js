@@ -23,6 +23,10 @@
   var btnDirRight = document.getElementById('btn-dir-right');
   var btnValidate = document.getElementById('btn-validate');
 
+  //jean
+  var jean = document.getElementById('jean');
+  var sonJean = true;
+
 
 
 ws.onmessage = function(message) {
@@ -100,8 +104,8 @@ btnValidate.onclick = function(){
     }
 
     rotate(dirMessage,marche);
-    let audio = new Audio('sound/visseuse.mp3');
-    audio.volume = 0.2;
+    let audio = new Audio('sound/faisons.mp3');
+    audio.volume = 0.5;
     audio.play();
     setTurret = true;
 }
@@ -189,6 +193,28 @@ document.onkeypress=function(e){
             break;
         default:
     }
+}
+
+//Jean qui parle
+jean.onclick = function(){
+    let nb = getRandomInt(2);
+    let audio;
+
+    if(sonJean){
+        audio = new Audio('sound/mauvais.mp3');
+        sonJean = false;
+    }
+    else{
+        audio = new Audio('sound/traitre.mp3');
+        sonJean = true;
+    }
+    audio.volume = 0.3;
+    audio.play();
+}
+
+//Nombre aléatoire
+function getRandomInt(max) {
+  return Math.floor(Math.random() * Math.floor(max));
 }
 
 })();
