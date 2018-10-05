@@ -1,6 +1,11 @@
 var rotation = 90;
 var movementPowerValue = 0;
 var auto;
+var motor = new Audio();
+var ambient = new Audio();
+motor.src = "sound/motor.mp3";
+motor.volume = 0.2;
+
 var audio = new Audio();
 audio.src = "sound/motor.mp3";
 audio.volume = 0.2;
@@ -29,6 +34,16 @@ window.onload = function () {
 
     span.onclick = function() {
         modal.style.display = "none";
+    }
+
+    if(isAudioEnable){
+        ambient.src = "sound/intermission.mp3";
+        ambient.volume = 0.2;
+        ambient.addEventListener('ended', function() {
+            this.currentTime = 0;
+            this.play();
+        }, false);
+        ambient.play();
     }
 };
 
@@ -96,7 +111,9 @@ function moveUp() {
         }
     ));
     console.log(movementPowerValue);
-    audio.play();
+
+    if(isAudioEnable)
+        motor.play();
 }
 
 function moveDown() {
@@ -164,6 +181,24 @@ function autoMode(){
     document.getElementById("auto").style.color  = "white";
     intervalAuto();
     document.getElementById("movementPower").innerHTML = "0.5";
+    }
+}
+
+var isAudioEnable = true;
+
+function enableAudio() {
+    if(isAudioEnable){
+        isAudioEnable = false;
+        ambient.pause();
+        ambient.currentTime = 0;;
+        motor.pause();
+        motor.currentTime = 0;
+        document.getElementById("audioBtnImg").src = "img/noaudio.png";
+    }
+    else if(!isAudioEnable){
+        isAudioEnable = true
+        ambient.play();
+        document.getElementById("audioBtnImg").src = "img/audio.png";
     }
 }
 
