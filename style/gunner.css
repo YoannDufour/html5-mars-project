@@ -82,3 +82,8 @@ body {
   border:solid;
   margin-bottom: 10px;
 }
+
+#power-potard{
+    appearance: none;
+    background-size: cover;
+}
