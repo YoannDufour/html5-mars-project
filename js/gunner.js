@@ -89,8 +89,6 @@ btnValidate.onclick = function(){
         dirMessage = turretTurnTo - dir;
     }
 
-    console.log('rotate');
-
     rotate(dirMessage,marche);
     let audio = new Audio('sound/visseuse.mp3');
     audio.volume = 0.2;
@@ -104,7 +102,6 @@ btnShoot.onclick = function(){
     power = power / 100;
 
     fire(power);
-    onreloading();
 }
 
 
