@@ -19,16 +19,16 @@
         else{
             switch(inputCommand.value){
                 case 'Captain':
-                    document.location.href="Artilleur.html?name=" + inputName.value + "&command=Captain&team=" + inputTeam.value ;
+                    document.location.href="Capitaine.html?name=" + inputName.value + "&command=Captain&team=" + inputTeam.value ;
                     break;
                 case 'Pilot' :
-                    document.location.href="Artilleur.html?name=" + inputName.value + "&command=Pilot&team=" + inputTeam.value;
+                    document.location.href="Pilote.html?name=" + inputName.value + "&command=Pilot&team=" + inputTeam.value;
                     break;
                 case 'Shooter' :
                     document.location.href="Artilleur.html?name=" + inputName.value + "&command=Shooter&team=" + inputTeam.value;
                     break;
                 case 'Engineer' :
-                    document.location.href="Artilleur.html?name=" + inputName.value + "&command=Engineer&team=" + inputTeam.value;
+                    document.location.href="Ingenieur.html?name=" + inputName.value + "&command=Engineer&team=" + inputTeam.value;
                     break;
                 default:
                     alert.innerHTML = "Choose a job !";

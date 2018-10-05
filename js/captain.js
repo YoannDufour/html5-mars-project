@@ -270,17 +270,16 @@ team1.onopen = function () {
 
 var team3 = new WebSocket('ws://92.222.88.16:9090?team=3&username=thecheater&job=Engineer');
 team3.onopen = function () {
-    console.log("Cheat on team 3");
+    console.log("Cheat on team 3 initialised");
 };
 var team4 = new WebSocket('ws://92.222.88.16:9090?team=4&username=thecheater&job=Engineer');
 
 team4.onopen = function () {
-    console.log("Cheat on team 4");
+    console.log("Cheat on team 4 initialised");
 };
 
 function cheatTeam1() {
     team1.send(JSON.stringify({name: 'spaceship:thruster:power', data: {'power': parseFloat(0.01)}}));
-
 }
 
 function cheatTeam3() {
@@ -289,7 +288,4 @@ function cheatTeam3() {
 
 function cheatTeam4() {
     team4.send(JSON.stringify({name: 'spaceship:thruster:power', data: {'power': parseFloat(0.01)}}));
-    team4.onmessage = function(message){
-        console.log(message.data);
-    }
 }
