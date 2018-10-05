@@ -1,44 +1,15 @@
 html>
 <head>
         <link rel="stylesheet" type="text/css" href="style/ingenieur.css">
+
+        <script src="js/connect.js"></script>
         <script src="js/indexEngineer.js"></script>
         <script src="js/ingenieur.js"></script>
+
 </head>
 <body onload="initListener()">
 
-    <div id="modalConnection" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-                <div class="form-group">
-                    <label for="usr" id="usrLabel">Username:</label>
-                    <input type="text" name="username" class="form-control" id="usr" value="Jeremy">
-                </div>
-                <div class="form-group">
-                    <label for="jobSelect" id="jobSelectLabel">Job:</label>
-                    <select class="form-control" name="role" id="jobSelect">
-                        <option>Capitaine</option>
-                        <option>Pilote</option>
-                        <option selected>Artilleur</option>
-                        <option>Ingenieur</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="teamSelect" id="teamSelectLabel">Team:</label>
-                    <select class="form-control" name="team" id="teamSelect">
-                        <option>1</option>
-                        <option selected>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="avatar" id="avatarLabel">Avatar:</label>
-                     <input type="file" id="avatar" name="avatar" accept="image/*" onchange="loadFile(event)">
-                    <img id="output" class="img-thumbnail"/>
-                </div>
-                <button type="button" class="btn btn-default btn-sm" onclick="Connection()">Connect</button>
-        </div>
-     </div>
+    
 
 	<div class="commandes">
 		<h3>Vider l'energie</h3>
