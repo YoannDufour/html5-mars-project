@@ -123,6 +123,14 @@ body {
 	display: inline;
 }
 
+.state {
+    width: 90%;
+    background-color: green;
+    margin: auto;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    font-size: 60px;
+}
 
 #NrgRest {
     font-family: DS-DIGIB;
