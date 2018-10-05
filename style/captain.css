@@ -126,5 +126,5 @@ body {
 }
 @keyframes colorblink2 {
     0% { }
-    50% { background-color:#1C1819; }
+    50% { color:#1C1819; }
 }
