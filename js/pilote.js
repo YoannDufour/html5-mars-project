@@ -1,6 +1,6 @@
 var rotation = 90;
 var movementPowerValue = 0;
-
+var auto;
 var audio = new Audio();
 audio.src = "sound/motor.mp3";
 audio.volume = 0.2;
@@ -107,7 +107,7 @@ document.addEventListener('keydown', function (event) {
 });
 
 function intervalAuto(){
-    const auto = setInterval(function(){ 
+     auto = setInterval(function(){ 
      ws.send(JSON.stringify({
          name: 'spaceship:move', data: {
              time: 1000,
