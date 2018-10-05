@@ -6,6 +6,7 @@ function sendThruster(value){
     ws.send(JSON.stringify({ name: 'spaceship:thruster:power', data: { 'power' : parseFloat(thrusterPower) }}));
 }
 
+
 function sendShield(value){
     document.getElementById("ShieldInfos").innerHTML = parseInt(value);
     var shieldPower = "0." + value;

@@ -47,20 +47,6 @@ function Connection() {
            document.getElementById("System").value = parseInt(parsedMsg.data.systemPower * 100);
            document.getElementById("SystemInfos").innerHTML=document.getElementById("System").value;
 
-           if (parsedMsg.data.broken) {
-            document.getElementById("System").value = 100;
-            document.getElementById("SystemInfos").innerHTML=document.getElementById("System").value;
-            sendSystem(document.getElementById("System").value);
-            document.getElementById("state").innerHTML = "REPAIR";
-            document.getElementById("state").style.backgroundColor = "red";
-           }
-
-           if (25 < parsedMsg.data.life > 35) {
-            document.getElementById("Propulseurs").value = 70;
-            document.getElementById("ThurstInfos").innerHTML=document.getElementById("Propulseurs").value;
-            document.getElementById("state").innerHTML = "OK";
-            document.getElementById("state").style.backgroundColor = "green";
-           }
            
        };
 }
