@@ -43,12 +43,12 @@ function rudderLeftBtnClick() {
 }
 
 function moveUp() {
-    movementPowerValue = Number(document.getElementById("movementPower").value);
+    movementPowerValue = Number(document.getElementById("movementPower").innerHTML);
     movementPowerValue += 0.25;
-    document.getElementById("movementPower").value = movementPowerValue;
+    document.getElementById("movementPower").innerHTML = movementPowerValue;
 
     if (movementPowerValue > 1) {
-        document.getElementById("movementPower").value = "1";
+        document.getElementById("movementPower").innerHTML = "1";
         movementPowerValue = 1;
     }
     if(ws !== undefined)
@@ -65,12 +65,12 @@ function moveUp() {
 
 function moveDown() {
 
-    movementPowerValue = Number(document.getElementById("movementPower").value);
+    movementPowerValue = Number(document.getElementById("movementPower").innerHTML);
     movementPowerValue -= 0.25;
-    document.getElementById("movementPower").value = movementPowerValue;
+    document.getElementById("movementPower").innerHTML = movementPowerValue;
 
     if (movementPowerValue < 0) {
-        document.getElementById("movementPower").value = "0";
+        document.getElementById("movementPower").innerHTML = "0";
         movementPowerValue = 0;
     }
     if(ws !== undefined)

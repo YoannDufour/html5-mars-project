@@ -4,6 +4,7 @@
     <link rel="stylesheet" type="text/css" href="style/baseStyle.css">
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="style/pilot.css">
+    <link rel="stylesheet" type="text/css" href="style/ingenieur.css">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="js/pilote.js"></script>
@@ -13,19 +14,20 @@
 <body>
     <h2>Pilot Commands</h2>
 <div id="container" class="d-flex justify-content-around">
+       
     <div id="movement" class="row justify-content-center">
-            
+            <div class="h1 text-center" id="moveControl">Move Control</div>
         <div id="moveContainer">
                 <div class="row">
-            <button type="button" class="btn btn-dark btn-sm" onclick="moveUp()">
+            <button type="button" class="btn btn-success" onclick="moveUp()">
                 <span class="glyphicon glyphicon-arrow-up"></span>
             </button>
         </div>
+            <div class="row justify-content-center">
+            <p id="movementPower">0</p>
+            </div>
             <div class="row">
-            <input type="number" id="movementPower" name="height" value="0" disabled/>
-        </div>
-            <div class="row">
-            <button type="button" class="btn btn-dark btn-sm" onclick="moveDown()">
+                <button type="button" class="btn btn-danger" onclick="moveDown()">
                 <span class="glyphicon glyphicon-arrow-down"></span>
             </button>
         </div>
@@ -35,10 +37,10 @@
     <div id="rudder" class="d-flex flex-column">
         <div class="h1 text-center">Trajectory Control</div>
         <div id="rudderControl">
-            <button type="button" id="rudderbtnLeft" class="btn btn-dark" onclick="rudderLeftBtnClick()">
+                <button type="button" class="btn btn-light" onclick="rudderLeftBtnClick()">
                 <span class="glyphicon glyphicon-arrow-left"></span>
             </button>
-            <button type="button" id="rudderbtnRight" class="btn btn-dark" onclick="rudderRightBtnClick()">
+            <button type="button" class="btn btn-light" onclick="rudderRightBtnClick()">
                 <span class="glyphicon glyphicon-arrow-right"></span>
             </button>
         </div>
@@ -58,12 +60,7 @@
                 </div>
                 <div class="form-group">
                     <label for="jobSelect" id="jobSelectLabel">Job:</label>
-                    <select class="form-control" name="role" id="jobSelect">
-                        <option>Capitaine</option>
-                        <option>Pilote</option>
-                        <option>Artilleur</option>
-                        <option>Ingenieur</option>
-                    </select>
+                    <input class="form-control" name="role" id="jobSelect" value="Pilote" disabled>
                 </div>
                 <div class="form-group">
                     <label for="teamSelect" id="teamSelectLabel">Team:</label>
