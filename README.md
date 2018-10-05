@@ -40,6 +40,7 @@ Le bouton "shoot" permet de lancer le tir
 Pannel de control (avec des petits ajouts non légaux....)
 
 1ère Ligne :
+
  -Premier cadre : angle de tire des tourelles
  
  -Deuxième cadre : status de l'artillerie (rechargement, chargé)
@@ -51,16 +52,19 @@ Pannel de control (avec des petits ajouts non légaux....)
  -Cinquième cadre : Orientation du vaisseau en degrés
  
  2ème Ligne :
+ 
  -Premier cadre : suivit des constante du vaisseau
  
  -Deuxième cadre : Suivit des points de vie avec une jauge (c'est plus joli)
  
  3ème Ligne :
+ 
  -Premier cadre : Information sur la zone 
  
  -Deuxième partie de la ligne : une caisse apparait si le chargement est fait
  
  4ème Ligne : 
+ 
  -Boutons de cheat (fait tourner a 180deg les autres vaisseau, et hop demi-tour)
  
  Option suplémentaire : Lorsque le vaisseau est cassé l'écran clignote rouge.
