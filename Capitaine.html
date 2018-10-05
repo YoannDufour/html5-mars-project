@@ -10,7 +10,7 @@
 <body>
 <div class="row firstline">
     <p class="turret panel-top col-sm-1">N</p>
-    <p class="gunner panel-top col-sm-4" > STATUS: LOADED </p>
+    <p class="gunner panel-top col-sm-4"> STATUS: LOADED </p>
     <p class="ship panel-top col-sm-1">N</p>
     <p class="health col-sm-1"></p>
     <p class="ship panel-top col-sm-1">180°</p>
@@ -46,7 +46,7 @@
         <span class="power-level" id="lvl-0">0%</span>
     </div>
     <div class="col-sm-11" style="text-align:center;">
-    <img class=" pic col-sm-2" src="https://www.vossey.com/gallery2/d/98379-1/360fx360f_001.png">
+        <img class=" pic col-sm-2" src="">
     </div>
 </div>
 
@@ -76,7 +76,6 @@
     };
 
     var hpupdate = function (life) {
-        console.log(life)
         if (life < 100) {
             document.getElementById("lvl-100").style.backgroundColor = "#1C1819";
             if (life < 90) {
@@ -208,27 +207,27 @@
         document.getElementsByClassName("health")[0].textContent = life + "HP";
     };
 
-    var shieldupdate = function (shield){
-        document.getElementsByClassName("myBar")[0].style.width = shield +"%";
-        document.getElementsByClassName("myBar")[0].textContent = shield +"%";
+    var shieldupdate = function (shield) {
+        document.getElementsByClassName("myBar")[0].style.width = shield + "%";
+        document.getElementsByClassName("myBar")[0].textContent = shield + "%";
     };
 
-    var syspowerupdate = function (syspower){
-        document.getElementsByClassName("myBar")[1].style.width = syspower +"%";
-        document.getElementsByClassName("myBar")[1].textContent = syspower +"%";
+    var syspowerupdate = function (syspower) {
+        document.getElementsByClassName("myBar")[1].style.width = syspower + "%";
+        document.getElementsByClassName("myBar")[1].textContent = syspower + "%";
     };
 
-    var thrusterupdate = function (thruster){
-        document.getElementsByClassName("myBar")[2].style.width = thruster +"%";
-        document.getElementsByClassName("myBar")[2].textContent = thruster +"%";
+    var thrusterupdate = function (thruster) {
+        document.getElementsByClassName("myBar")[2].style.width = thruster + "%";
+        document.getElementsByClassName("myBar")[2].textContent = thruster + "%";
     };
 
-    var brokenupdate = function(isBroken){
-        if(isBroken=="true"){
-        document.getElementsByTagName("body")[0].style.backgroundColor = "red";
-        document.getElementsByTagName("body")[0].style.animation = "colorblink 1s infinite";
+    var brokenupdate = function (isBroken) {
+        if (isBroken == true) {
+            document.getElementsByTagName("body")[0].style.backgroundColor = "red";
+            document.getElementsByTagName("body")[0].style.animation = "colorblink 1s infinite";
         }
-        else{
+        else {
             document.getElementsByTagName("body")[0].style.backgroundColor = "#1c1111";
             document.getElementsByTagName("body")[0].style.animation = "";
         }
@@ -254,21 +253,53 @@
         }
     }
 
-    var isBroken="false";
+    var cargoupdate = function (cargo) {
+        if (cargo == false)
+            document.getElementsByClassName("pic")[0].src = "";
+        else
+            document.getElementsByClassName("pic")[0].src = "https://www.vossey.com/gallery2/d/98379-1/360fx360f_001.png";
+    }
+
+    var isBroken = false;
     var life = 100;
     var angle = 127;
-    var shield=33.3;
-    var syspower=66.6;
-    var thruster=33.3;
+    var shield = 33.3;
+    var syspower = 33.3;
+    var thruster = 33.3;
     var reloading = false;
-    var reloaded= true;
+    var reloaded = true;
     var turret = "267"
+    var cargo = false;
 
-    gunnerupdate(reloading,reloaded,turret)
-    brokenupdate(isBroken);
-    shieldupdate(shield);
-    syspowerupdate(syspower);
-    thrusterupdate(thruster);
-    directionupdate(angle);
-    hpupdate(life);
+
+    const ws = new WebSocket('ws://92.222.88.16:9090?team=2&username=Yoyo&job=Captain');
+    var spaceShip
+    ws.onopen = function () {
+        console.log('socket open with server !');
+    };
+
+    ws.onmessage = function (message) {
+
+        spaceShip = JSON.parse(message.data);
+        spaceShip = spaceShip.data;
+        isBroken = spaceShip.broken;
+        life = spaceShip.life;
+        angle = spaceShip.angle;
+        shield = Math.round(spaceShip.shieldPower * 1000) / 10;
+        syspower = Math.round(spaceShip.systemPower * 1000) / 10;
+        thruster = Math.round(spaceShip.thrusterPower * 1000) / 10;
+        reloading = spaceShip.reloading;
+        reloaded = spaceShip.reloaded;
+        turret = spaceShip.turretAngle;
+        cargo = spaceShip.cargo;
+
+        gunnerupdate(reloading, reloaded, turret)
+        brokenupdate(isBroken);
+        shieldupdate(shield);
+        syspowerupdate(syspower);
+        thrusterupdate(thruster);
+        directionupdate(angle);
+        hpupdate(life);
+        cargoupdate(cargo);
+    };
 </script>
