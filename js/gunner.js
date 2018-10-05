@@ -1,6 +1,5 @@
 (function(){
 
-
   var turretAngle = 0;
   var turretTurnDirection = 1;
   var turretTurnTo = 0;
@@ -8,9 +7,7 @@
   var turretReloaded = false;
   var turretReloading = false;
 
-
   var setTurret = true;
-
 
   // tir
   var potPower = document.getElementById('power-potard');
@@ -27,17 +24,8 @@
   var btnValidate = document.getElementById('btn-validate');
 
 
-<<<<<<< HEAD
-  ws = new WebSocket('ws://92.222.88.16:9090?team=2&username=Xx-lesbgdu01-xX&job=Shooter');
 
-  ws.onopen = function () {
-    console.log("socket open with server !");
-  };
-
-  ws.onmessage = function(message) {
-=======
 ws.onmessage = function(message) {
->>>>>>> ac2a30d57cf3fc3f6265af539c608aa8bed67429
     spaceship = JSON.parse(message.data);
     turretTurnTo = spaceship.data.turretAngle;
 
@@ -46,84 +34,59 @@ ws.onmessage = function(message) {
       degres.value = spaceship.data.turretAngle;
     }
 
-
-    //console.log(spaceship);
-
     if(spaceship.data.reloaded && !turretReloaded){
-      onreloaded();
-      turretReloaded = true;
+        turretReloaded = true;
+        turretReloading = false;
+        onreloaded();
     }
-    else if(!spaceship.data.reloaded){
-<<<<<<< HEAD
-      turretReloaded = false;
-=======
-        onreloading();
+    else if(spaceship.data.reloading && !turretReloading){
         turretReloaded = false;
->>>>>>> ac2a30d57cf3fc3f6265af539c608aa8bed67429
+        turretReloading = true;
+        onreloading();
     }
-  }
+ }
 
 
 
-
-  potPower.oninput = function(){
+potPower.oninput = function(){
     powerScreen.innerHTML = this.value;
-  }
+}
 
-  degres.oninput = function(){
-<<<<<<< HEAD
+degres.oninput = function(){
     setTurret = false;
-=======
 
-     setTurret = false;
-
->>>>>>> ac2a30d57cf3fc3f6265af539c608aa8bed67429
     let dir = parseInt(degres.value);
     potDirection.style.transform = "rotate(" + dir + "deg)";
-  }
+}
 
-  btnDirRight.onclick = function(){
-<<<<<<< HEAD
+btnDirRight.onclick = function(){
     setTurret = false;
-=======
-
-      setTurret = false;
-
->>>>>>> ac2a30d57cf3fc3f6265af539c608aa8bed67429
     let dir = parseInt(degres.value);
     dir += 1;
     degres.value = dir%360;
     potDirection.style.transform = "rotate(" + parseInt(dir) + "deg)";
-  }
+}
 
-  btnDirLeft.onclick = function(){
-<<<<<<< HEAD
+btnDirLeft.onclick = function(){
     setTurret = false;
-=======
-
-      setTurret = false;
-
->>>>>>> ac2a30d57cf3fc3f6265af539c608aa8bed67429
     let dir = parseInt(degres.value);
     dir -= 1;
     degres.value = dir%360;
     potDirection.style.transform = "rotate(" + parseInt(dir) + "deg)";
-  }
+ }
 
-  btnValidate.onclick = function(){
+btnValidate.onclick = function(){
     let dir = parseInt(degres.value);
-
     let marche;
     let dirMessage;
 
     if(dir > turretTurnTo && dir <= turretTurnTo + 180){
-      marche = 1;
-      dirMessage = dir - turretTurnTo;
-      console.log(dirMessage);
+        marche = 1;
+        dirMessage = dir - turretTurnTo;
     }
     else{
-      marche = -1;
-      dirMessage = turretTurnTo - dir;
+        marche = -1;
+        dirMessage = turretTurnTo - dir;
     }
 
     console.log('rotate');
@@ -133,55 +96,52 @@ ws.onmessage = function(message) {
     audio.volume = 0.2;
     audio.play();
     setTurret = true;
+}
 
-  }
-
-  btnShoot.onclick = function(){
+btnShoot.onclick = function(){
     let power = parseInt(potPower.value);
 
     power = power / 100;
 
     fire(power);
     onreloading();
-  }
+}
 
-  function rotate(angle,direction){
+
+function rotate(angle,direction){
     var json = {
-      name : "spaceship:turret:rotate",
-      data : {
-        angle : angle ,
-        direction : direction
-      }
+        name : "spaceship:turret:rotate",
+        data : {
+            angle : angle ,
+            direction : direction
+        }
     }
 
     ws.send(JSON.stringify(json));
-  }
+}
 
-  function turnTo(angle){
+function turnTo(angle){
     var json = {
-      name : "spaceship:turret:turnto",
-      data : {
-        angle : angle
-      }
+        name : "spaceship:turret:turnto",
+        data : {
+            angle : angle
+        }
     }
 
     ws.send(JSON.stringify(json));
-  }
+}
 
-  function fire(power){
+function fire(power){
     var json = {
-      name : "spaceship:turret:fire",
-      data : {
-
-        "power" : power
-
-      }
+        name : "spaceship:turret:fire",
+        data : {
+            "power" : power
+        }
     }
-
     ws.send(JSON.stringify(json));
-  }
+}
 
-  function onreloaded(){
+function onreloaded(){
     ledReloading.style.background = "#b1b1b1";
     ledReloaded.style.background = "#00ff00";
     btnShoot.disabled = false;
@@ -189,9 +149,9 @@ ws.onmessage = function(message) {
     //Son charger
     let audio = new Audio('sound/charger.mp3');
     audio.play();
-  }
+}
 
-  function onreloading(){
+function onreloading(){
     ledReloading.style.background = "#ff0000";
     ledReloaded.style.background = "#b1b1b1";
     btnShoot.disabled = true;
@@ -199,28 +159,23 @@ ws.onmessage = function(message) {
     //Son decharger
     let audio = new Audio('sound/decharger.mp3');
     audio.play();
-  }
+}
 
-  document.onkeypress=function(e){e=e||window.event;
-      var key=e.which?e.which:event.keyCode;
-      switch (key) {
+document.onkeypress=function(e){
+    e=e||window.event;
+    var key=e.which?e.which:event.keyCode;
+    switch (key) {
         case 32:
-          document.getElementById('btn-shoot').click();
-          break;
+            document.getElementById('btn-shoot').click();
+            break;
         case 122:
-          document.getElementById('btn-dir-left').click();
-        break;
+            document.getElementById('btn-dir-left').click();
+            break;
         case 115:
-          document.getElementById('btn-dir-right').click();
-        break;
+            document.getElementById('btn-dir-right').click();
+            break;
         default:
-
-      }
     }
+}
 
-<<<<<<< HEAD
-
-  })();
-=======
 })();
->>>>>>> ac2a30d57cf3fc3f6265af539c608aa8bed67429
