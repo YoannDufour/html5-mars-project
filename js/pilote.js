@@ -36,19 +36,13 @@ window.onload = function () {
         modal.style.display = "none";
     }
 
-    if(isAudioEnable){
-        ambient.src = "sound/intermission.mp3";
-        ambient.volume = 0.2;
-        ambient.addEventListener('ended', function() {
-            this.currentTime = 0;
-            this.play();
-        }, false);
-        ambient.play();
-    }
 };
 
 
 function Connection() {
+
+    let team = document.getElementById("teamSelect").value;
+
     ws = new WebSocket('ws://92.222.88.16:9090' +
         '?team=' + document.getElementById('teamSelect').value +
         '&username=' + document.getElementById('usr').value +
@@ -59,6 +53,18 @@ function Connection() {
         modal.style.display = "none";
         console.log("socket open with server !");
     };
+
+    document.getElementById("rudderImg").src = 'public/images/ship'+team+'.png';
+
+    if(isAudioEnable){
+        ambient.src = "sound/intermission.mp3";
+        ambient.volume = 0.2;
+        ambient.addEventListener('ended', function() {
+            this.currentTime = 0;
+            this.play();
+        }, false);
+        ambient.play();
+    }
 
     ws.onmessage = function (message) {
         var messageParse = JSON.parse(message.data);
