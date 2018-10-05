@@ -180,7 +180,7 @@ function autoMode(){
     document.getElementById("auto").style.backgroundColor  = "#5cb85c";
     document.getElementById("auto").style.color  = "white";
     intervalAuto();
-    document.getElementById("movementPower").innerHTML = "0.5";
+    document.getElementById("movementPower").innerHTML = "1";
     }
 }
 
