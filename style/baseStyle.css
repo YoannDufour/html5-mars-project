@@ -1,3 +1,40 @@
+body{
+    background-image: url("../img/space_11.jpg");
+    background-size: cover;
+}
+
+#homepageContainer{
+    background: white;
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 40%;
+    height: 60%;
+    border-radius: 20px;
+    text-align: center;
+    padding: 20px;
+}
+
+#usr,#jobSelect,#teamSelect,#avatar,#output{
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+
+
+#usrLabel{
+    margin-top: 10px;
+}
+
+#output{
+    width: 150px;
+    height: 150px;
+}
+
+
 /* The Modal (background) */
 .modal {
     display: none; /* Hidden by default */
@@ -11,7 +48,10 @@
     margin-right: auto;
     margin-left: auto;
 }
- /* Modal Content/Box */
+
+
+/* Modal Content/Box */
+
 .modal-content {
     background-color: #fefefe;
     margin: 15% auto; /* 15% from the top and centered */
@@ -19,14 +59,20 @@
     border: 1px solid #888;
     width: 80%; /* Could be more or less, depending on screen size */
 }
- /* The Close Button */
+
+
+/* The Close Button */
+
 .close {
     color: #aaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
 }
- .close:hover,
+
+
+.close:hover,
+
 .close:focus {
     color: black;
     text-decoration: none;
