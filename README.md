@@ -71,12 +71,10 @@ Pannel de control (avec des petits ajouts non légaux....)
 
 #Engineer 
 
-Premier panneau : affichage des commandes + état du vaisseau. Lorsque le carré est vert et inscrit "OK", le vaisseau est  en état de 
-
+Premier panneau : affichage des commandes + état du vaisseau. Lorsque le carré est vert et inscrit "OK", le vaisseau est en état de 
 marche. Quand il est rouge avec l'inscription "REPAIR" le vaisseau ne fonctionne plus, il faut alors le réparer.
 
 Panneau principal : Affichage des différents niveaux d'énergie du vaisseau sous forme de Slider Range.
 
 Possibilité de les modifier avec la souris ou les boutons clavier. Un petit compteur affiche la valeur exacte du slider, pour pouvoir 
-
 être plus précis.
