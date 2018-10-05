@@ -19,16 +19,16 @@
 
 <div class="row">
     <div class="group-bar panel-top col-sm-5">
+         <span class="thruster">
+            <p>THRUSTER POWER</p>
+            <div class="myBar"></div>
+        </span>
         <span class="shield">
             <p>SHIELD</p>
             <div class="myBar"></div>
         </span>
         <span class="syspower">
             <p>SYSTEM POWER</p>
-            <div class="myBar"></div>
-        </span>
-        <span class="thruster">
-            <p>THRUSTER POWER</p>
             <div class="myBar"></div>
         </span>
     </div>
@@ -45,8 +45,11 @@
         <span class="power-level" id="lvl-10">10%</span>
         <span class="power-level" id="lvl-0">0%</span>
     </div>
-    <div class="col-sm-11" style="text-align:center;">
-        <img class=" pic col-sm-2" src="">
+</div>
+<div class="row">
+    <p class="zone panel-top col-sm-4"></p>
+    <div class="col-sm-6" style="text-align:center;">
+        <img class=" pic col-sm-3" src="">
     </div>
 </div>
 
@@ -208,18 +211,18 @@
     };
 
     var shieldupdate = function (shield) {
-        document.getElementsByClassName("myBar")[0].style.width = shield + "%";
-        document.getElementsByClassName("myBar")[0].textContent = shield + "%";
+        document.getElementsByClassName("myBar")[1].style.width = shield + "%";
+        document.getElementsByClassName("myBar")[1].textContent = shield + "%";
     };
 
     var syspowerupdate = function (syspower) {
-        document.getElementsByClassName("myBar")[1].style.width = syspower + "%";
-        document.getElementsByClassName("myBar")[1].textContent = syspower + "%";
+        document.getElementsByClassName("myBar")[2].style.width = syspower + "%";
+        document.getElementsByClassName("myBar")[2].textContent = syspower + "%";
     };
 
     var thrusterupdate = function (thruster) {
-        document.getElementsByClassName("myBar")[2].style.width = thruster + "%";
-        document.getElementsByClassName("myBar")[2].textContent = thruster + "%";
+        document.getElementsByClassName("myBar")[0].style.width = thruster + "%";
+        document.getElementsByClassName("myBar")[0].textContent = thruster + "%";
     };
 
     var brokenupdate = function (isBroken) {
@@ -260,6 +263,19 @@
             document.getElementsByClassName("pic")[0].src = "https://www.vossey.com/gallery2/d/98379-1/360fx360f_001.png";
     }
 
+    var zoneupdate = function(zone){
+        if (zone == true) {
+            document.getElementsByClassName("zone")[0].textContent = "SAFE ZONE";
+            document.getElementsByClassName("zone")[0].style.color = "#29ff01";
+            document.getElementsByClassName("zone")[0].style.animation = "";
+        }
+        else {
+            document.getElementsByClassName("zone")[0].textContent = "WARNING";
+            document.getElementsByClassName("zone")[0].style.color = "red";
+            document.getElementsByClassName("zone")[0].style.animation = "colorblink2 1s infinite";
+        }
+    }
+
     var isBroken = false;
     var life = 100;
     var angle = 127;
@@ -270,6 +286,7 @@
     var reloaded = true;
     var turret = "267"
     var cargo = false;
+    var zone = false;
 
 
     const ws = new WebSocket('ws://92.222.88.16:9090?team=2&username=Yoyo&job=Captain');
@@ -292,6 +309,7 @@
         reloaded = spaceShip.reloaded;
         turret = spaceShip.turretAngle;
         cargo = spaceShip.cargo;
+        zone = spaceShip.inSafeZone;
 
         gunnerupdate(reloading, reloaded, turret)
         brokenupdate(isBroken);
@@ -301,5 +319,6 @@
         directionupdate(angle);
         hpupdate(life);
         cargoupdate(cargo);
+        zoneupdate(zone);
     };
 </script>
