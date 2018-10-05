@@ -49,6 +49,7 @@ ws.onmessage = function(message) {
         turretReloaded = true;
     }
     else if(!spaceship.data.reloaded){
+        onreloading();
         turretReloaded = false;
     }
 }
@@ -95,6 +96,8 @@ ws.onmessage = function(message) {
         marche = -1;
         dirMessage = turretTurnTo - dir;
     }
+
+    console.log('rotate');
 
     rotate(dirMessage,marche);
     let audio = new Audio('sound/visseuse.mp3');
