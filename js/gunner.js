@@ -95,8 +95,6 @@ btnValidate.onclick = function(){
     if(dir >= turretTurnTo && dir <= (turretTurnTo + 180)){
         marche = 1;
         dirMessage = dir - turretTurnTo;
-
-        console.log(dirMessage);
     }
     else if(dir <= turretTurnTo && dir >= (turretTurnTo - 180)){
         marche = -1;
