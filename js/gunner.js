@@ -1,5 +1,6 @@
 (function(){
-  const ws = new WebSocket(`ws://92.222.88.16:9090?team=2&username=Xx-lesbgdu01-xX&job=Shooter`);
+  //const ws = new WebSocket(`ws://92.222.88.16:9090?team=2&username=Xx-lesbgdu01-xX&job=Shooter`);
+  var ws, modal;
 
   var turretAngle = 0;
   var turretTurnDirection = 1;
@@ -7,6 +8,8 @@
 
   var turretReloaded = false;
   var turretReloading = false;
+
+  var setTurret = false;
 
   // tir
   var potPower = document.getElementById('power-potard');
@@ -21,6 +24,36 @@
   var btnDirLeft = document.getElementById('btn-dir-left');
   var btnDirRight = document.getElementById('btn-dir-right');
   var btnValidate = document.getElementById('btn-validate');
+
+
+  ws = new WebSocket('ws://92.222.88.16:9090?team=2&username=Xx-lesbgdu01-xX&job=Shooter');
+
+  ws.onopen = function () {
+    console.log("socket open with server !");
+};
+
+ws.onmessage = function(message) {
+    spaceship = JSON.parse(message.data);
+
+    if(!setTurret){
+        potDirection.style.transform = "rotate(" + spaceship.data.turretAngle + "deg)";
+        degres.value = spaceship.data.turretAngle;
+        setTurret = true;
+    }
+    //console.log(spaceship);
+
+    if(spaceship.data.reloaded && !turretReloaded){
+        onreloaded();
+        turretReloaded = true;
+    }
+    else if(!spaceship.data.reloaded){
+        turretReloaded = false;
+    }
+}
+
+
+
+
 
   potPower.oninput = function(){
     powerScreen.innerHTML = this.value;
@@ -55,6 +88,7 @@
 
   btnShoot.onclick = function(){
     let power = parseInt(potPower.value);
+    power = power / 100;
     fire(power);
     onreloading();
   }
@@ -86,7 +120,7 @@
     var json = {
       name : "spaceship:turret:fire",
       data : {
-        power : power
+        "power" : power
       }
     }
 
@@ -112,5 +146,7 @@
     let audio = new Audio('sound/decharger.mp3');
     audio.play();
   }
+
+
 
 })();
