@@ -34,6 +34,7 @@ body{
     height: 150px;
 }
 
+
 /* The Modal (background) */
 .modal {
     display: none; /* Hidden by default */
@@ -48,7 +49,9 @@ body{
     margin-left: auto;
 }
 
+
 /* Modal Content/Box */
+
 .modal-content {
     background-color: #fefefe;
     margin: 15% auto; /* 15% from the top and centered */
@@ -57,7 +60,9 @@ body{
     width: 80%; /* Could be more or less, depending on screen size */
 }
 
+
 /* The Close Button */
+
 .close {
     color: #aaa;
     float: right;
@@ -65,7 +70,9 @@ body{
     font-weight: bold;
 }
 
+
 .close:hover,
+
 .close:focus {
     color: black;
     text-decoration: none;
