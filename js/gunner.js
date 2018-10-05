@@ -48,6 +48,8 @@
   btnValidate.onclick = function(){
     let dir = parseInt(degres.value);
     turnTo(dir);
+    let audio = new Audio('sound/visseuse.mp3');
+    audio.play();
   }
 
   btnShoot.onclick = function(){
