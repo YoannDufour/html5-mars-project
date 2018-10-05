@@ -1,13 +1,32 @@
 var rotation = 90;
 
+ws.onmessage = function(message) {
+    var messageParse = JSON.parse(message);
+    document.getElementById("rudderImg").style.transform = "rotate("+messageParse.angle+"deg)";
+    console.log(message.data);
+};
+
 function rudderRightBtnClick(){
-    rotation += 30;
-    document.getElementById("rudderImg").style.transform = "rotate("+rotation+"deg)";
+    /*rotation += 30;
+    document.getElementById("rudderImg").style.transform = "rotate("+rotation+"deg)";*/
+    ws.send(JSON.stringify({ name: 'spaceship:rotate', data: {
+                'angle' : 30,
+                'direction' : 1,
+            }
+        }
+    ));
+
 }
 
 function rudderLeftBtnClick(){
-    rotation -= 30;
-    document.getElementById("rudderImg").style.transform = "rotate("+rotation+"deg)";
+    /*rotation -= 30;
+    document.getElementById("rudderImg").style.transform = "rotate("+rotation+"deg)";*/
+    ws.send(JSON.stringify({ name: 'spaceship:rotate', data: {
+                'angle' : 30,
+                'direction' : -1,
+            }
+        }
+    ));
 }
 
 function moveUp(){
@@ -22,12 +41,12 @@ function moveUp(){
 
 function moveDown(){
 
-let movementPowerValue = Number(document.getElementById("movementPower").value);
-movementPowerValue -= 0.25;
-document.getElementById("movementPower").value = movementPowerValue;
+    let movementPowerValue = Number(document.getElementById("movementPower").value);
+    movementPowerValue -= 0.25;
+    document.getElementById("movementPower").value = movementPowerValue;
 
-if(movementPowerValue<0){
-    document.getElementById("movementPower").value = "0";
+    if(movementPowerValue<0){
+        document.getElementById("movementPower").value = "0";
     }
 }
 
@@ -51,4 +70,5 @@ document.addEventListener('keydown', function (event) {
             break;
     }
 });
+
 
