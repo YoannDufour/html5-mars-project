@@ -1,57 +1,90 @@
 var rotation = 90;
+var movementPowerValue = 0;
 
-ws.onmessage = function(message) {
-    var messageParse = JSON.parse(message);
-    document.getElementById("rudderImg").style.transform = "rotate("+messageParse.angle+"deg)";
-    console.log(message.data);
-};
+var audio = new Audio();
+audio.src = "sound/motor.mp3";
+audio.volume = 0.2;
 
-function rudderRightBtnClick(){
+
+try {
+    ws.onmessage = function (message) {
+        var messageParse = JSON.parse(message);
+        document.getElementById("rudderImg").style.transform = "rotate(" + messageParse.angle + "deg)";
+        console.log(message.data);
+    };
+} catch (e) {
+
+}
+
+function rudderRightBtnClick() {
     /*rotation += 30;
     document.getElementById("rudderImg").style.transform = "rotate("+rotation+"deg)";*/
-    ws.send(JSON.stringify({ name: 'spaceship:rotate', data: {
-                'angle' : 30,
-                'direction' : 1,
+    if(ws !== undefined)
+    ws.send(JSON.stringify({
+            name: 'spaceship:rotate', data: {
+                'angle': 30,
+                'direction': 1,
             }
         }
     ));
-
 }
 
-function rudderLeftBtnClick(){
+function rudderLeftBtnClick() {
     /*rotation -= 30;
     document.getElementById("rudderImg").style.transform = "rotate("+rotation+"deg)";*/
-    ws.send(JSON.stringify({ name: 'spaceship:rotate', data: {
-                'angle' : 30,
-                'direction' : -1,
+    if(ws !== undefined)
+    ws.send(JSON.stringify({
+            name: 'spaceship:rotate', data: {
+                'angle': 30,
+                'direction': -1,
             }
         }
     ));
 }
 
-function moveUp(){
-    let movementPowerValue = Number(document.getElementById("movementPower").value);
+function moveUp() {
+    movementPowerValue = Number(document.getElementById("movementPower").value);
     movementPowerValue += 0.25;
     document.getElementById("movementPower").value = movementPowerValue;
 
-    if(movementPowerValue>1){
+    if (movementPowerValue > 1) {
         document.getElementById("movementPower").value = "1";
+        movementPowerValue = 1;
     }
+    if(ws !== undefined)
+    ws.send(JSON.stringify({
+            name: 'spaceship:move', data: {
+                time: 100,
+                power: movementPowerValue,
+            }
+        }
+    ));
+    console.log(movementPowerValue);
+    audio.play();
 }
 
-function moveDown(){
+function moveDown() {
 
-    let movementPowerValue = Number(document.getElementById("movementPower").value);
+    movementPowerValue = Number(document.getElementById("movementPower").value);
     movementPowerValue -= 0.25;
     document.getElementById("movementPower").value = movementPowerValue;
 
-    if(movementPowerValue<0){
+    if (movementPowerValue < 0) {
         document.getElementById("movementPower").value = "0";
+        movementPowerValue = 0;
     }
+    if(ws !== undefined)
+    ws.send(JSON.stringify({
+            name: 'spaceship:move', data: {
+                time: 100,
+                power: movementPowerValue,
+            }
+        }
+    ));
 }
 
 document.addEventListener('keydown', function (event) {
-    switch (event.key){
+    switch (event.key) {
         case 'ArrowLeft':
         case 'q':
             rudderLeftBtnClick();
@@ -68,6 +101,8 @@ document.addEventListener('keydown', function (event) {
         case 's':
             moveDown();
             break;
+        default:
+            console.log(event.key);
     }
 });
 
