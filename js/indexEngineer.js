@@ -1,7 +1,9 @@
-
-
-    ws.onmessage = function(message) {
+document.addEventListener('connected', function () {
+        ws.onmessage = function(message) {
         var parsedMsg = JSON.parse(message.data);
+        if (parsedMsg.error) {
+            alert(parsedMsg.error)
+        }
            document.getElementById("Propulseurs").value = parseInt(parsedMsg.data.thrusterPower * 100);
            document.getElementById("ThurstInfos").innerHTML=document.getElementById("Propulseurs").value;
            document.getElementById("Bouclier").value = parseInt(parsedMsg.data.shieldPower * 100);
@@ -18,3 +20,4 @@
             }
            
        }
+    });
