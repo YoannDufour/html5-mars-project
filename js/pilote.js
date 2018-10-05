@@ -6,14 +6,23 @@ audio.src = "sound/motor.mp3";
 audio.volume = 0.2;
 
 
-try {
-    ws.onmessage = function (message) {
-        var messageParse = JSON.parse(message);
-        document.getElementById("rudderImg").style.transform = "rotate(" + messageParse.angle + "deg)";
-        console.log(message.data);
-    };
-} catch (e) {
+function Connection() {
+    ws = new WebSocket('ws://92.222.88.16:9090' +
+        '?team=' + document.getElementById('teamSelect').value +
+        '&username=' + document.getElementById('usr').value +
+        '&job=' + document.getElementById('jobSelect').value
+    );
 
+    ws.onopen = function () {
+        modal.style.display = "none";
+        console.log("socket open with server !");
+    };
+
+    ws.onmessage = function (message) {
+        var messageParse = JSON.parse(message.data);
+        var angle = parseInt(messageParse.data.angle) + 90;
+        document.getElementById("rudderImg").style.transform = "rotate(" + angle + "deg)";
+    };
 }
 
 function rudderRightBtnClick() {
