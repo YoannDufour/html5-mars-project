@@ -1,4 +1,3 @@
-var rotation = 90;
 var movementPowerValue = 0;
 var auto;
 var motor = new Audio();
@@ -68,7 +67,7 @@ function Connection() {
 
     ws.onmessage = function (message) {
         var messageParse = JSON.parse(message.data);
-        var angle = parseInt(messageParse.data.angle) + 90;
+        var angle = parseInt(messageParse.data.angle);
         document.getElementById("rudderImg").style.transform = "rotate(" + angle + "deg)";
     };
 }
@@ -79,7 +78,7 @@ function rudderRightBtnClick() {
     if(ws !== undefined)
     ws.send(JSON.stringify({
             name: 'spaceship:rotate', data: {
-                'angle': 30,
+                'angle': 10,
                 'direction': 1,
             }
         }
@@ -92,7 +91,7 @@ function rudderLeftBtnClick() {
     if(ws !== undefined)
     ws.send(JSON.stringify({
             name: 'spaceship:rotate', data: {
-                'angle': 30,
+                'angle': 10,
                 'direction': -1,
             }
         }
