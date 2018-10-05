@@ -35,11 +35,9 @@
 ws.onmessage = function(message) {
     spaceship = JSON.parse(message.data);
 
-    if(!setTurret){
-        potDirection.style.transform = "rotate(" + spaceship.data.turretAngle + "deg)";
-        degres.value = spaceship.data.turretAngle;
-        setTurret = true;
-    }
+    potDirection.style.transform = "rotate(" + spaceship.data.turretAngle + "deg)";
+    degres.value = spaceship.data.turretAngle;
+
     //console.log(spaceship);
 
     if(spaceship.data.reloaded && !turretReloaded){
