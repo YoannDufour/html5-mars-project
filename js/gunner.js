@@ -67,6 +67,7 @@ ws.onmessage = function(message) {
   }
 
   btnDirRight.onclick = function(){
+      setTurret = false;
     let dir = parseInt(degres.value);
     dir += 1;
     degres.value = dir%360;
@@ -74,6 +75,7 @@ ws.onmessage = function(message) {
   }
 
   btnDirLeft.onclick = function(){
+      setTurret = false;
     let dir = parseInt(degres.value);
     dir -= 1;
     degres.value = dir%360;
