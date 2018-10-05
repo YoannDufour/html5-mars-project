@@ -80,6 +80,11 @@ btnDirLeft.onclick = function(){
 //Boutons pour envoyer le changement de direction de la tourelle
 btnValidate.onclick = function(){
     let dir = parseInt(degres.value);
+
+    if(dir > 180){
+        dir = - (dir % 180);
+    }
+
     let marche;
     let dirMessage;
 
