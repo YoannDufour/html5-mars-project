@@ -26,6 +26,7 @@ window.onload = function () {
 };
 
 function Connection() {
+    modal = document.getElementById('modalConnection');
     ws = new WebSocket('ws://92.222.88.16:9090' +
         '?team='+document.getElementById('teamSelect').value+
         '&username='+document.getElementById('usr').value+
@@ -33,11 +34,31 @@ function Connection() {
     );
 
     ws.onopen = function () {
-        const event = new Event('connected');
-
         modal.style.display = "none";
         console.log("socket open with server !");
-
-        document.dispatchEvent(event);
     };
+
+    ws.onmessage = function(message) {
+        var parsedMsg = JSON.parse(message.data);
+           document.getElementById("Propulseurs").value = parseInt(parsedMsg.data.thrusterPower * 100);
+           document.getElementById("ThurstInfos").innerHTML=document.getElementById("Propulseurs").value;
+           document.getElementById("Bouclier").value = parseInt(parsedMsg.data.shieldPower * 100);
+           document.getElementById("ShieldInfos").innerHTML=document.getElementById("Bouclier").value;
+           document.getElementById("System").value = parseInt(parsedMsg.data.systemPower * 100);
+           document.getElementById("SystemInfos").innerHTML=document.getElementById("System").value;
+
+           if (parsedMsg.data.broken) {
+            document.getElementById("System").value = 100;
+            document.getElementById("SystemInfos").innerHTML=document.getElementById("System").value;
+            sendSystem(document.getElementById("System").value);
+            document.getElementById("state").innerHTML = "REPAIR";
+            document.getElementById("state").style.backgroundColor = "red";
+           }
+
+           if (!parsedMsg.data.broken) {
+            document.getElementById("state").innerHTML = "OK";
+            document.getElementById("state").style.backgroundColor = "green";
+           }
+           
+       };
 }
