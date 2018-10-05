@@ -35,4 +35,8 @@ Les sons permettent de jouer sans regarder l'écran
 
 Le bouton "shoot" permet de lancer le tir
 
+#Captain
+
+Pannel de controle (avec des petits ajouts non legaux....)
+
 
