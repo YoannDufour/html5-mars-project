@@ -1,0 +1,11 @@
+body{
+    background-image: url('../img/gunnerBackground.jpg');
+}
+
+h1{
+    color: yellow;
+}
+
+#alert{
+    display: none;
+}
