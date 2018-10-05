@@ -205,7 +205,7 @@ var cargoupdate = function (cargo) {
         document.getElementsByClassName("pic")[0].src = "https://www.vossey.com/gallery2/d/98379-1/360fx360f_001.png";
 }
 
-var zoneupdate = function(zone){
+var zoneupdate = function (zone) {
     if (zone == true) {
         document.getElementsByClassName("zone")[0].textContent = "SAFE ZONE";
         document.getElementsByClassName("zone")[0].style.color = "#29ff01";
@@ -233,7 +233,7 @@ var zone = false;
 
 var spaceShip;
 
-document.addEventListener('connected', function() {
+document.addEventListener('connected', function () {
     ws.onmessage = function (message) {
 
         spaceShip = JSON.parse(message.data);
@@ -263,6 +263,33 @@ document.addEventListener('connected', function() {
 });
 
 
-var team1="92.222.88.16:9090?team=1&username=TheCheater&job=Engineer";
-var team3="92.222.88.16:9090?team=3&username=TheCheater&job=Engineer";
-var team4="92.222.88.16:9090?team=4&username=TheCheater&job=Engineer";
+var team1 = new WebSocket('ws://92.222.88.16:9090?team=1&username=thecheater&job=Engineer');
+team1.onopen = function () {
+    console.log("Cheat on team 1 initialised");
+};
+
+var team3 = new WebSocket('ws://92.222.88.16:9090?team=3&username=thecheater&job=Engineer');
+team3.onopen = function () {
+    console.log("Cheat on team 3");
+};
+var team4 = new WebSocket('ws://92.222.88.16:9090?team=4&username=thecheater&job=Engineer');
+
+team4.onopen = function () {
+    console.log("Cheat on team 4");
+};
+
+function cheatTeam1() {
+    team1.send(JSON.stringify({name: 'spaceship:thruster:power', data: {'power': parseFloat(0.01)}}));
+
+}
+
+function cheatTeam3() {
+    team3.send(JSON.stringify({name: 'spaceship:thruster:power', data: {'power': parseFloat(0.01)}}));
+}
+
+function cheatTeam4() {
+    team4.send(JSON.stringify({name: 'spaceship:thruster:power', data: {'power': parseFloat(0.01)}}));
+    team4.onmessage = function(message){
+        console.log(message.data);
+    }
+}
