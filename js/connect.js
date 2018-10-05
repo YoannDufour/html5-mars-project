@@ -12,6 +12,7 @@ ws = new WebSocket('ws://92.222.88.16:9090?team=' + usrTeam + '&username=' + usr
         const event = new Event('connected');
         console.log("socket open with server !");
         document.dispatchEvent(event);
+        onOpen();
     };
 
 

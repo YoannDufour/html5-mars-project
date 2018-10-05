@@ -21,40 +21,7 @@ function loadFile(event) {
     output.src = avatar;
 };
 
-window.onload = function () {
-// Get the modal
-    modal = document.getElementById('modalConnection');
-
-// Get the <span> element that closes the modal
-    var span = document.getElementsByClassName("close")[0];
-
-// When the user clicks on the button, open the modal
-    modal.style.display = "block";
-
-    span.onclick = function() {
-        modal.style.display = "none";
-    }
-
-};
-
-
-function Connection() {
-
-    let team = document.getElementById("teamSelect").value;
-
-    ws = new WebSocket('ws://92.222.88.16:9090' +
-        '?team=' + document.getElementById('teamSelect').value +
-        '&username=' + document.getElementById('usr').value +
-        '&job=' + document.getElementById('jobSelect').value
-    );
-
-    ws.onopen = function () {
-        modal.style.display = "none";
-        console.log("socket open with server !");
-    };
-
-    document.getElementById("rudderImg").src = 'public/images/ship'+team+'.png';
-
+document.addEventListener("click", function() {
     if(isAudioEnable){
         ambient.src = "sound/intermission.mp3";
         ambient.volume = 0.2;
@@ -64,6 +31,36 @@ function Connection() {
         }, false);
         ambient.play();
     }
+}, {once : true});
+
+document.addEventListener("keydown", function() {
+    if(isAudioEnable){
+        ambient.src = "sound/intermission.mp3";
+        ambient.volume = 0.2;
+        ambient.addEventListener('ended', function() {
+            this.currentTime = 0;
+            this.play();
+        }, false);
+        ambient.play();
+    }
+}, {once : true});
+
+
+function getParameterByName(name){
+    var tmp = window.location.search.substr(1).split('&');
+    var parameters = [];
+
+    for (var i = 0; i < tmp.length; i++) {
+        var x = tmp[ i ].split('=');
+        parameters[x[0]] = x[1];
+    }
+
+    return parameters[name];
+}
+
+function onOpen() {
+    let team = getParameterByName('team');
+    document.getElementById("rudderImg").src = 'public/images/ship'+team+'.png';
 
     ws.onmessage = function (message) {
         var messageParse = JSON.parse(message.data);
@@ -142,6 +139,7 @@ function moveDown() {
 }
 
 document.addEventListener('keydown', function (event) {
+
     switch (event.key) {
         case 'ArrowLeft':
         case 'q':
