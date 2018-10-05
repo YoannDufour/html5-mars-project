@@ -169,11 +169,11 @@ function intervalAuto(){
      auto = setInterval(function(){ 
      ws.send(JSON.stringify({
          name: 'spaceship:move', data: {
-             time: 1000,
-             power: 0.5,
+             time: 100,
+             power: 1,
          }
      }));
-    }, 1000);
+    }, 100);
 }
 
 function autoMode(){
@@ -186,7 +186,7 @@ function autoMode(){
     document.getElementById("auto").style.backgroundColor  = "#5cb85c";
     document.getElementById("auto").style.color  = "white";
     intervalAuto();
-    document.getElementById("movementPower").innerHTML = "0.5";
+    document.getElementById("movementPower").innerHTML = "1";
     }
 }
 
