@@ -37,11 +37,16 @@
                         <button id="btn-dir-left" class="btn btn-secondary" type="button" name="button">left</button>
                     </div>
                     <div class="col-4 text-center">
-                        <span class="direction-screen" id="dir-screen">0 °</span>
+                        <input type="text" class="inputDirection" id="dir-screen" value="0">°
                     </div>
                     <div class="col-4 text-right">
                         <button id="btn-dir-right" class="btn btn-secondary" type="button" name="button">right</button>
                     </div>
+                </div>
+                <div class="row">
+                  <div class="col-12 text-center">
+                    <button class="btn btn-primary" id="btn-validate" type="button" name="button">Validate</button>
+                  </div>
                 </div>
             </article>
             <!-- End left board (direction) -->
@@ -66,11 +71,11 @@
                 <div class="row">
                     <div class="col-6 text-center">
                         <span>Reloading</span>
-                        <div class="led" id="led-red"></div>
+                        <div class="led" id="led-reloading"></div>
                     </div>
                     <div class="col-6 text-center">
                         <span>Reloaded</span>
-                        <div class="led" id="led-green"></div>
+                        <div class="led" id="led-reloaded"></div>
                     </div>
                 </div>
 
