@@ -55,7 +55,9 @@ function Connection() {
             document.getElementById("state").style.backgroundColor = "red";
            }
 
-           if (!parsedMsg.data.broken) {
+           if (25 < parsedMsg.data.life > 35) {
+            document.getElementById("Propulseurs").value = 70;
+            document.getElementById("ThurstInfos").innerHTML=document.getElementById("Propulseurs").value;
             document.getElementById("state").innerHTML = "OK";
             document.getElementById("state").style.backgroundColor = "green";
            }
