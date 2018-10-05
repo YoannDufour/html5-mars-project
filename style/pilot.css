@@ -1,3 +1,17 @@
+@font-face {
+    font-family: DS-DIGIB;
+    src: url(DS-DIGIB.TTF);
+}
+
+body{
+    overflow: hidden;
+}
+
+h2,.h1{
+    font-family: DS-DIGIB !important;
+    color: white !important;
+}
+
 #container{
     height: 90%;
 }
@@ -16,17 +30,17 @@
     height: 50%;
     width: 20%;
     border-radius: 10px;
-    background-color: white;
+    background-color: 02001a;
 }
 
 #rudder{
     border: 1px solid white;
     margin-top: auto;
     margin-bottom: auto;
-    height: 50%;
+    height: 75%;
     width: 40%;
     border-radius: 10px;
-    background-color: white;
+    background-color: 02001a;
     padding: 1%;
 }
 
@@ -52,14 +66,27 @@
 #movementPower{
     text-align: center;
     margin-top: 10px;
-    margin-bottom : 10px;
-  
+    margin-bottom : 20px;
+    font-family: DS-DIGIB;
+    font-size: 35px;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    color: white;
 }
 
 #rudderImg{
-    height: 90%;
+    margin-top: 10%;
+    height: 50%;
     width: auto;
     transform: rotate(90deg);
+    border-radius: 50%;
+    border: solid 2px white;
+    padding: 10px;
+}
+
+#moveControl{
+    margin-bottom: 0px !important;
 }
 
 span.glyphicon {
@@ -68,14 +95,22 @@ span.glyphicon {
 
 h2{
     text-align: center;
-    font-size: 24px;
+    font-size: 90px !important;
     color: white !important;
 }
 
-#moveContainer{
-    margin: auto;
+#auto{
+    height: 10%;
+    margin-bottom: 10px;
+    font-family: DS-DIGIB;
+    font-size: 20px;
 }
 
 body{
     background-image: url("../img/space_11.jpg");
+}
+
+.audiobtn{
+    height: 25px;
+    width: 25px;
 }

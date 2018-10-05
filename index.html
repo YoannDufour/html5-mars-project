@@ -4,42 +4,22 @@
     <link rel="stylesheet" type="text/css" href="style/baseStyle.css">
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="js/index.js"></script>
 </head>
 
 <body>
+    <script>
+        function loadJob(job){
+            window.location = job+'.html';
+        }
+    </script>
     <div id="homepageContainer">
-        <form enctype="application/x-www-form-urlencoded" id="formConnection" action="Capitaine.html" method="post">
             <div class="form-group">
-                <label for="usr" id="usrLabel">Username:</label>
-                <input type="text" name="username" class="form-control" id="usr">
+                <p>Choose your job : </p>
+                <button class="btn" onclick="loadJob('Capitaine')">Capitaine</button>
+                <button class="btn" onclick="loadJob('Pilote')">Pilote</button>
+                <button class="btn" onclick="loadJob('Artilleur')">Artilleur</button>
+                <button class="btn" onclick="loadJob('Ingenieur')">Ingenieur</button>
             </div>
-            <div class="form-group">
-                <label for="jobSelect" id="jobSelectLabel">Job:</label>
-                <select class="form-control" name="role" id="jobSelect" onchange="selectRole()">
-                    <option>Capitaine</option>
-                    <option>Pilote</option>
-                    <option>Artilleur</option>
-                    <option>Ingenieur</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="teamSelect" id="teamSelectLabel">Team:</label>
-                <select class="form-control" name="team" id="teamSelect">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                </select>
-            </div>
-            <div class="form-group">
-                    <label for="avatar" id="avatarLabel">Avatar:</label>
-
-                    <input type="file" id="avatar" name="avatar" accept="image/*" onchange="loadFile(event)">
-                    <img id="output" class="img-thumbnail"/>
-                </div>
-            <button type="submit" class="btn btn-default btn-sm" onclick="Connection()">Connect</button>
-        </form>
     </div>
 </body>
 
