@@ -1,6 +1,5 @@
 (function(){
   //const ws = new WebSocket(`ws://92.222.88.16:9090?team=2&username=Xx-lesbgdu01-xX&job=Shooter`);
-  var ws, modal;
 
   var turretAngle = 0;
   var turretTurnDirection = 1;
@@ -24,13 +23,6 @@
   var btnDirLeft = document.getElementById('btn-dir-left');
   var btnDirRight = document.getElementById('btn-dir-right');
   var btnValidate = document.getElementById('btn-validate');
-
-
-  ws = new WebSocket('ws://92.222.88.16:9090?team=2&username=Xx-lesbgdu01-xX&job=Shooter');
-
-  ws.onopen = function () {
-    console.log("socket open with server !");
-};
 
 ws.onmessage = function(message) {
     spaceship = JSON.parse(message.data);
