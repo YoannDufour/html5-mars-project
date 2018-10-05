@@ -106,4 +106,26 @@ document.addEventListener('keydown', function (event) {
     }
 });
 
+function autoMode(){
+    if(document.getElementById("auto").style.backgroundColor === "rgb(92, 184, 92)"){
+        document.getElementById("auto").style.backgroundColor  = "white";
+        document.getElementById("auto").style.color  = "black";
+        document.getElementById("movementPower").innerHTML = "0";
+        clearInterval(auto);
+    }else{
+    document.getElementById("auto").style.backgroundColor  = "#5cb85c";
+    document.getElementById("auto").style.color  = "white";
+    var auto = setInterval(function(){ 
+        ws.send(JSON.stringify({
+            name: 'spaceship:move', data: {
+                time: 1000,
+                power: 0.5,
+            }
+        }
+    ));
+    document.getElementById("movementPower").innerHTML = "0.5";
+    }, 1000);
+    }
+
+}
 
