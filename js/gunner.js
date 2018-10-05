@@ -47,7 +47,7 @@ ws.onmessage = function(message) {
  }
 
 
-
+/* Les deux input pour puissance et direction */
 potPower.oninput = function(){
     powerScreen.innerHTML = this.value;
 }
@@ -59,6 +59,7 @@ degres.oninput = function(){
     potDirection.style.transform = "rotate(" + dir + "deg)";
 }
 
+//Bouton pour décaler la tourelle dans le sens des aiguilles d'une montre
 btnDirRight.onclick = function(){
     setTurret = false;
     let dir = parseInt(degres.value);
@@ -67,6 +68,7 @@ btnDirRight.onclick = function(){
     potDirection.style.transform = "rotate(" + parseInt(dir) + "deg)";
 }
 
+//Bouton pour décaler la tourelle dans le sens inverse des aiguilles d'une montre
 btnDirLeft.onclick = function(){
     setTurret = false;
     let dir = parseInt(degres.value);
@@ -75,16 +77,19 @@ btnDirLeft.onclick = function(){
     potDirection.style.transform = "rotate(" + parseInt(dir) + "deg)";
  }
 
+//Boutons pour envoyer le changement de direction de la tourelle
 btnValidate.onclick = function(){
     let dir = parseInt(degres.value);
     let marche;
     let dirMessage;
 
-    if(dir > turretTurnTo && dir <= turretTurnTo + 180){
+    if(dir >= turretTurnTo && dir <= (turretTurnTo + 180)){
         marche = 1;
         dirMessage = dir - turretTurnTo;
+
+        console.log(dirMessage);
     }
-    else{
+    else if(dir <= turretTurnTo && dir >= (turretTurnTo - 180)){
         marche = -1;
         dirMessage = turretTurnTo - dir;
     }
@@ -96,6 +101,7 @@ btnValidate.onclick = function(){
     setTurret = true;
 }
 
+//Bouton pour tirer
 btnShoot.onclick = function(){
     let power = parseInt(potPower.value);
 
@@ -104,7 +110,7 @@ btnShoot.onclick = function(){
     fire(power);
 }
 
-
+//Fonction pour envoyer un déplacement à la tourelle (au serveur)
 function rotate(angle,direction){
     var json = {
         name : "spaceship:turret:rotate",
@@ -117,6 +123,7 @@ function rotate(angle,direction){
     ws.send(JSON.stringify(json));
 }
 
+//Fonction pour envoyer une position à la tourelle  (au serveur)
 function turnTo(angle){
     var json = {
         name : "spaceship:turret:turnto",
@@ -128,6 +135,7 @@ function turnTo(angle){
     ws.send(JSON.stringify(json));
 }
 
+//Fonction pour envoyer l'action de tirer au serveur
 function fire(power){
     var json = {
         name : "spaceship:turret:fire",
@@ -138,6 +146,7 @@ function fire(power){
     ws.send(JSON.stringify(json));
 }
 
+//Fonction qui permet de dire au joueur que le missile est chargé
 function onreloaded(){
     ledReloading.style.background = "#b1b1b1";
     ledReloaded.style.background = "#00ff00";
@@ -148,6 +157,7 @@ function onreloaded(){
     audio.play();
 }
 
+//Fonction qui permet de dire au joueur que le missile est en chargement
 function onreloading(){
     ledReloading.style.background = "#ff0000";
     ledReloaded.style.background = "#b1b1b1";
@@ -158,6 +168,7 @@ function onreloading(){
     audio.play();
 }
 
+//Fonction qui permet d'utiliser espace pour tirer, z pour tourner la tourelle dans le sens trigo, s pour le sens inverse
 document.onkeypress=function(e){
     e=e||window.event;
     var key=e.which?e.which:event.keyCode;
