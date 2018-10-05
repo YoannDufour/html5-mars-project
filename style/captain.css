@@ -51,6 +51,17 @@ body {
     font-size: 45px;
     border: 5px solid yellow;
 }
+.zone{
+    text-align: center;
+    color: #29ff01;
+    margin: auto;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    font-size: 45px;
+    border: 5px solid yellow;
+}
 .ship {
     text-align: center;
     color: #29ff01;
@@ -112,4 +123,8 @@ body {
 @keyframes colorblink {
     0% { }
     50% { background-color:#1c1111; }
+}
+@keyframes colorblink2 {
+    0% { }
+    50% { color:#1C1819; }
 }
