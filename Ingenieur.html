@@ -1,1 +1,68 @@
+html>
+<head>
+        <link rel="stylesheet" type="text/css" href="style/ingenieur.css">
+        <script src="js/index.js"></script>
+        <script src="js/ingenieur.js"></script>
+</head>
+<body onload="initListener()">
+
+    <div id="modalConnection" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+                <div class="form-group">
+                    <label for="usr" id="usrLabel">Username:</label>
+                    <input type="text" name="username" class="form-control" id="usr" value="Jeremy">
+                </div>
+                <div class="form-group">
+                    <label for="jobSelect" id="jobSelectLabel">Job:</label>
+                    <select class="form-control" name="role" id="jobSelect">
+                        <option>Capitaine</option>
+                        <option>Pilote</option>
+                        <option selected>Artilleur</option>
+                        <option>Ingenieur</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="teamSelect" id="teamSelectLabel">Team:</label>
+                    <select class="form-control" name="team" id="teamSelect">
+                        <option>1</option>
+                        <option selected>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="avatar" id="avatarLabel">Avatar:</label>
+                     <input type="file" id="avatar" name="avatar" accept="image/*" onchange="loadFile(event)">
+                    <img id="output" class="img-thumbnail"/>
+                </div>
+                <button type="button" class="btn btn-default btn-sm" onclick="Connection()">Connect</button>
+        </div>
+     </div>
+
+	<div class="commandes">
+		<h3>Vider l'energie</h3>
+		<p><h4>A</h4> (propulseurs) | <h4>Q</h4> (bouclier) | <h4>W</h4> (survie)</p>
+		<h3>Remplir avec l'energie restante</h3>
+		<p><h4>R</h4> (propulseurs) | <h4>F</h4> (bouclier) | <h4>V</h4> (survie)</p>
+		<h3>+1 Energie</h3>
+		<p><h4>E</h4> (propulseurs) | <h4>D</h4> (bouclier) | <h4>C</h4> (survie)</p>
+		<h3>-1 Energie</h3>
+        <p><h4>Z</h4> (propulseurs) | <h4>S</h4> (bouclier) | <h4>X</h4> (survie)</p>
+        <div class = "state" id="state">
+        OK
+        </div>
+    </div>
+    <div class="slidecontainer">
+        <div id= "title"> ENGINEER : SYSTEM RESSOURCES </div>
+        <p>Energie Propulseurs:</p><p id="ThurstInfos" class="NumLvl">33</p>
+        <input type="range" min="0" max="99" value="33" id="Propulseurs" class="slider" onchange="sendThruster(this.value)">
+        <p>Energie Bouclier:</p><p id="ShieldInfos" class="NumLvl">33</p>
+        <input type="range" min="0" max="99" value="33" id="Bouclier" class="slider" onchange="sendShield(this.value)">
+        <p>Energie Systeme Survie:</p><p id="SystemInfos" class="NumLvl">33</p>
+        <input type="range" min="0" max="99" value="33" id="System" class="slider" onchange="sendSystem(this.value)">
+	</div>
+    
+</body>
+</html>
 
