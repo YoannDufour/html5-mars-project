@@ -60,7 +60,7 @@ function getParameterByName(name){
 
 function onOpen() {
     let team = getParameterByName('team');
-    document.getElementById("rudderImg").src = 'public/images/ship'+team+'.png';
+    document.getElementById("rudderImg").src = 'img/ship'+team+'.png';
 
     ws.onmessage = function (message) {
         var messageParse = JSON.parse(message.data);
