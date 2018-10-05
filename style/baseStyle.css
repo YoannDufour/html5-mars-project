@@ -1,3 +1,4 @@
+
 body{
     background-image: url("../img/space_11.jpg");
     background-size: cover;
@@ -16,14 +17,15 @@ body{
     border-radius: 20px;
     text-align: center;
     padding: 20px;
+
 }
 
 #usr,#jobSelect,#teamSelect,#avatar,#output{
     margin-left: auto;
     margin-right: auto;
+    width: 80%;
     width: 100%;
 }
-
 
 #usrLabel{
     margin-top: 10px;
@@ -33,6 +35,7 @@ body{
     width: 150px;
     height: 150px;
 }
+
 
 
 /* The Modal (background) */
@@ -49,7 +52,6 @@ body{
     margin-left: auto;
 }
 
-
 /* Modal Content/Box */
 
 .modal-content {
@@ -60,7 +62,6 @@ body{
     width: 80%; /* Could be more or less, depending on screen size */
 }
 
-
 /* The Close Button */
 
 .close {
@@ -70,11 +71,11 @@ body{
     font-weight: bold;
 }
 
-
 .close:hover,
-
 .close:focus {
     color: black;
     text-decoration: none;
     cursor: pointer;
-}
+
+} 
+
