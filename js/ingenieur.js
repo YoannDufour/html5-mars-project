@@ -37,17 +37,17 @@ function initListener() {
         sendSystem(document.getElementById("System").value);
     }
 	if(event.key == "a") {
-        document.getElementById("Propulseurs").value = 0;
+        document.getElementById("Propulseurs").value = 0.1;
         document.getElementById("ThurstInfos").innerHTML=document.getElementById("Propulseurs").value;
         sendThruster(document.getElementById("Propulseurs").value);    
     }
 	if(event.key == "q") {
-        document.getElementById("Bouclier").value = 0;
+        document.getElementById("Bouclier").value = 0.1;
         document.getElementById("ShieldInfos").innerHTML=document.getElementById("Bouclier").value;
         sendShield(document.getElementById("Bouclier").value);   
     }
 	if(event.key == "w") {
-        document.getElementById("System").value = 0;
+        document.getElementById("System").value = 0.1;
         document.getElementById("SystemInfos").innerHTML=document.getElementById("System").value;
         sendSystem(document.getElementById("System").value);    
     }
