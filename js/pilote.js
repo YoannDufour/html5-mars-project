@@ -123,8 +123,8 @@ function autoMode(){
             }
         }
     ));
-    document.getElementById("movementPower").innerHTML = "0.5";
     }, 1000);
+    document.getElementById("movementPower").innerHTML = "0.5";
     }
 
 }

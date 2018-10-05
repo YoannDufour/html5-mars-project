@@ -3,6 +3,10 @@
     src: url(DS-DIGIB.TTF);
 }
 
+body{
+    overflow: hidden;
+}
+
 h2,.h1{
     font-family: DS-DIGIB !important;
     color: white !important;
